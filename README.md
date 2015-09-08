@@ -80,7 +80,7 @@ FieldPackager::Unwrap(ARRAY);
 Get a normal name for this field name.
 
 ```php
-/** And "EmailAddress" will be turned */
+/** And "EmailAddress" will be returned */
 FieldPackager::ToNormal('email_address');
 ```
 
@@ -89,6 +89,6 @@ FieldPackager::ToNormal('email_address');
 Get a field name for this normal name.
 
 ```php
-/** And "email_address" will be turned */
+/** And "email_address" will be returned */
 FieldPackager::ToField('EmailAddress');
 ```
