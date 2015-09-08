@@ -55,6 +55,16 @@ if($Result['EmailAddress'] == xxx)
 if($Result['email_address'] == xxx)
 ```
 
+## When Aira does exist
+
+If you have [Aira](http://github.com/TeaMeow/Aira) to handler your errors,
+
+You should set this to true (false by default.).
+
+```php
+FieldPackager::$HasAira = true;
+```
+
 ## Package!
 
 Package is a function for **field -> normal name**,
