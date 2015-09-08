@@ -6,6 +6,8 @@ it'll convert the field names to normal names,
 
 look down for the real example once you got the result from your database.
 
+**The following type supports only: `field_name` and `field-name`.**
+
 #Usage
 FieldPackager is a static class, so you don't need to construst it.
 
@@ -55,19 +57,37 @@ if($Result['EmailAddress'] == xxx)
 if($Result['email_address'] == xxx)
 ```
 
-## When Aira does exist
+# Configures
 
-If you have [Aira](http://github.com/TeaMeow/Aira) to handler your errors,
-
-You should set this to true (false by default.).
+You must set your source type and the normal name type.
 
 ```php
-FieldPackager::$HasAira = true;
+/** Set true if your field name is 'field_name', set false if it's 'field-name' */
+private static $field_type = true;
+
+/** Set true if your normal name is 'CamelCase', set false if it's 'camelCase' */
+private static $NormalName = true;
 ```
 
-and `Aira::Add('FIELDER_UNKNOWN')` will be called once the field name cannot be found.
+# High Prority List
 
-## Package!
+If some of your fields are 'out of the rule', you can manual add it to the list,
+
+this makes the FieldPackager process the fields which is in the list first.
+
+```php
+private static $List = ['userName' => 'user-name',
+                        'Password' => 'password'];
+```
+
+Once you package it, you should get something like this.
+
+```php
+/** 'user-name' should be returned not 'user_name' */
+FieldPackager::ToField('userName');
+```
+
+## Package
 
 Package is a function for **field -> normal name**,
 
@@ -77,7 +97,7 @@ and **multi-dimensional array is supported**.
 FieldPackager::Package(ARRAY);
 ```
 
-## Unwrap! (NOT SUPPORTED YET)
+## Unwrap
 
 You can unwrap your package with this function,
 
@@ -104,3 +124,15 @@ Get a field name for this normal name.
 /** And "email_address" will be returned */
 FieldPackager::ToField('EmailAddress');
 ```
+
+## When Aira does exist
+
+If you have [Aira](http://github.com/TeaMeow/Aira) to handler your errors,
+
+You should set this to true (false by default.).
+
+```php
+FieldPackager::$HasAira = true;
+```
+
+and `Aira::Add('FIELDER_UNKNOWN')` will be called once the field name cannot be found.
