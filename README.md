@@ -65,6 +65,8 @@ You should set this to true (false by default.).
 FieldPackager::$HasAira = true;
 ```
 
+and `Aira::Add('FIELDER_UNKNOWN')` will be called once the field name cannot be found.
+
 ## Package!
 
 Package is a function for **field -> normal name**,
