@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FieldPackager Static Class
+ * Fielder Static Class
  *
  * @category  Database Access
  * @package   FieldPackager
@@ -12,7 +12,7 @@
  * @version   1.0
  **/
 
-class FieldPackager
+class Fielder
 {
     public  static $HasAira    = false;
     private static $field_type = true;
